@@ -1,7 +1,9 @@
 const express=require('express');
-const Post=require('./models/post');
+
 const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
+
+const postRoutes=require('./routes/post-routes')
 
 const app=express();
 app.use(bodyParser.json());
@@ -21,35 +23,7 @@ app.use((req,res,next)=>{
   next();
 })
 
-app.post("/api/posts",(req,res,next)=>{
-   const post=new Post({
-          title:req.body.title,
-          content:req.body.content
-   });
-   post.save().then(createdPost=>{
-     console.log(createdPost)
-    res.status(201).json({message:"post added successfully",id:createdPost._id});
-   });
-  console.log(post);
-})
-app.get("/api/posts",(req,res,next)=>{
-  Post.find().then(posts=>{
-    res.json({
-       message:"Post fetched successfully",
-       posts:posts
-    })
-  })
-})
-
-app.delete("/api/posts/:id",(req,res,next)=>{
-  const id=req.params.id;
-  console.log(id);
-  Post.deleteOne({_id:id}).then(result=>{
-    console.log(result);
-    res.status(200).json({message:"Post deleted Successfully"})
-  })
- // res.json("Post deleted from backend")
-})
+app.use('/api/posts',postRoutes);
 
 
 module.exports=app;
