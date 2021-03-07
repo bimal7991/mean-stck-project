@@ -1,9 +1,12 @@
 ul{
-
  list-style: none;
   margin: 0x;
-
+  display: flex;
 }
+a{
+  font-size: 20px;
+}
+
 
 .spacer{
   flex: 1 1 auto;

@@ -4,3 +4,20 @@ mat-card{
 mat-form-field,textarea{
 width: 100%;
 }
+
+
+input[type="file"]{
+  visibility: hidden;
+
+}
+.hint{
+  color: green;
+}
+
+.image{
+   height: 6rem;
+   margin: 1px auto;
+}
+.image img{
+  height: 100%;
+}
