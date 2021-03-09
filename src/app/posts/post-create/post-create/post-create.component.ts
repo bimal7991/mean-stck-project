@@ -73,7 +73,7 @@ export class PostCreateComponent implements OnInit {
 
            if(postForm.valid){
              this.isLoading=true;
-           const post:Post={_id:null,title:postForm.value.title,content:postForm.value.content,imagePath:this.filePath}
+           //const post:Post={_id:null,title:postForm.value.title,content:postForm.value.content,imagePath:this.filePath}
           // this.createPost.emit(post)
             if(this.mode==='create'){
               console.log(postForm.value.image);

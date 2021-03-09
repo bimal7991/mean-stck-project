@@ -56,8 +56,9 @@ export class PostService implements OnInit {
     postData.append("title", title);
     postData.append("content", content);
     postData.append("image", image, "hello");
+    postData.append('creator',null)
     console.log(postData.get("image"));
-    const post: Post = { _id: id, title: title, content: content, imagePath: image };
+   // const post: Post = { _id: id, title: title, content: content, imagePath: image };
     this.http.put("http://localhost:3000/api/posts/" + id, postData).subscribe(response => {
       this.router.navigate(['/']);
     })

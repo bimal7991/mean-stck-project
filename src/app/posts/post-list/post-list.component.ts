@@ -11,10 +11,9 @@ import { PostService } from '../post.service';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit,OnDestroy {
-
   isAuthenticated=false;
+  userId:string;
   constructor(public postService:PostService,public authService:AuthService) { }
-
   private postSub:Subscription;
   private authSub:Subscription;
   isLoading=false;
@@ -26,6 +25,7 @@ export class PostListComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
          this.isLoading=true;
+         this.userId=this.authService.getUserId();
         this.postService.getPosts(this.postPerPage,this.currentPage);
         this.postSub=this.postService.getUpdatedPosts().subscribe((postData:{posts:Post[],maxPosts:number})=>{
         this.posts=postData.posts;
@@ -35,6 +35,7 @@ export class PostListComponent implements OnInit,OnDestroy {
       this.isAuthenticated=this.authService.getAuthStatus();
        this.authSub=this.authService.getAuthStatusListener().subscribe(res=>{
          this.isAuthenticated=res;
+         this.userId=this.authService.getUserId();
        })
 
   }

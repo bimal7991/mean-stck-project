@@ -11,6 +11,14 @@ a{
 .spacer{
   flex: 1 1 auto;
 }
+h2{
+  margin-left: 16px;
+  color: yellow;
+  display: flow-root;
+}
+button{
+  font-size: 20px;
+}
 
 a{
   color: white;
